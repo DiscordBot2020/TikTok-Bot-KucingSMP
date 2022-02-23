@@ -1,1 +1,1 @@
-https://github.com/DiscordBot2020/TikTok-Bot-KucingSMP
+worker: python3 main.py
