@@ -37,7 +37,7 @@ async def handleMessage(message):
             print("Downloaded: " + fileName + " For User: " + str(message.author))
 
             if(messages.startswith("Error")):
-                await message.author.send('TikBot has failed you. Consider berating my human if this was not expected.\nMessage: ' + messages)
+                await message.author.send('TikTok Bot has failed you. Consider berating my human if this was not expected.\nMessage: ' + messages)
                 return
 
             audioFilename = "audio_" + fileName + ".mp3"
@@ -59,7 +59,7 @@ async def handleMessage(message):
         return
 
     # Only do anything in TikTok channels
-    if(not message.channel.name.startswith("tik-tok")):
+    if(not message.channel.name.startswith("🎬︙tiktok")):
         return
 
     # Be polite!
@@ -71,7 +71,7 @@ async def handleMessage(message):
     url = extractResponse["url"]
     messages = extractResponse['messages']
     if(messages.startswith("Error")):
-        await message.channel.send('TikBot encountered an error determing a URL. Consider berating my human if this was not expected.\nMessage: ' + messages)
+        await message.channel.send('TikTok Bot encountered an error determing a URL. Consider berating my human if this was not expected.\nMessage: ' + messages)
         return
 
     print("Got URL: " + url + " For User: " + str(message.author))
@@ -85,13 +85,13 @@ async def handleMessage(message):
         validateResponse = isSupportedUrl(url)
         messages = validateResponse['messages']
         if(messages.startswith("Error")):
-            await message.channel.send('TikBot encountered an error validating the URL. Consider berating my human if this was not expected.\nMessage: ' + messages)
+            await message.channel.send('TikTok Bot encountered an error validating the URL. Consider berating my human if this was not expected.\nMessage: ' + messages)
             return
         if(validateResponse['supported'] == 'false'):
             # Unsupported URL, return silently without doing anything
             return
 
-    await message.channel.send('TikBot downloading video now!', delete_after=10)
+    await message.channel.send('TikTok Bot downloading video now!', delete_after=10)
     
     downloadResponse = {'fileName':  '', 'duration':  0, 'messages': '', 'videoId': '', 'repost': False, 'repostOriginalMesssageId': ''}
 
@@ -103,7 +103,7 @@ async def handleMessage(message):
         messages = downloadResponse['messages']
         if(messages.startswith("Error") and attemptcount < retries):
             await message.channel.send('Download failed. Retrying!', delete_after=10)
-            retryMultiplier = os.getenv('TIKBOT_RETRY_MULTI')
+            retryMultiplier = os.getenv('TikTok Bot_RETRY_MULTI')
             if(retryMultiplier != None):
                 time.sleep(int(retryMultiplier) * attemptcount)
             else:
@@ -121,7 +121,7 @@ async def handleMessage(message):
     print("Downloaded: " + fileName + " For User: " + str(message.author))
 
     if(messages.startswith("Error")):
-        await message.channel.send('TikBot has failed you. Consider berating my human if this was not expected.\nMessage: ' + messages)
+        await message.channel.send('TikTok Bot has failed you. Consider berating my human if this was not expected.\nMessage: ' + messages)
         return
 
     if(repost == True):
