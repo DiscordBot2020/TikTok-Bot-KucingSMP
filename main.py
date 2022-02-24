@@ -23,6 +23,14 @@ async def handleMessage(message):
     duration = 0
     messages = ""
 
+    # Status
+    @client.event
+    async def on_ready():
+    await client.change_presence(activity=discord.Streaming(name='I Have Crush on You!', url='https://www.twitch.tv/your_channel_here'))
+    
+    print('Connected to bot: {}'.format(client.user.name))
+    print('Bot ID: {}'.format(client.user.id))
+
     # Do special things in DMs
     if(type(message.channel) is discord.DMChannel):
         if message.content.startswith('🎵'):
