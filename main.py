@@ -179,7 +179,7 @@ async def handleMessage(message):
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    await client.change_presence(activity=discord.Streaming(name='Video TikTok Kamu', url='https://www.twitch.tv/Kucing'))
+    await client.change_presence(activity=discord.Streaming(name='Tante Lala', url='https://www.twitch.tv/Kucing'))
 
 @client.event
 async def on_message(message):
