@@ -180,10 +180,6 @@ async def handleMessage(message):
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Tante Lala'))
-
-    @tasks.loop(seconds=10)
-async def change_status():
-  await bot.change_presence(activity=discord.Game(next(status)))
     
 @client.event
 async def on_message(message):
